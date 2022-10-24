@@ -2,9 +2,9 @@
 
 namespace FintechSystems\DomainsCoza\Tests;
 
+use FintechSystems\DomainsCoza\DomainsCozaServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use FintechSystems\DomainsCoza\DomainsCozaServiceProvider;
 
 class TestCase extends Orchestra
 {

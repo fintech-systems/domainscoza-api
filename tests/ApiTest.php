@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Http;
-use FintechSystems\DomainsCoza\Tests\Config;
-use FintechSystems\DomainsCoza\Facades\DomainsCoza;
 use FintechSystems\DomainsCoza\DomainsCoza as DomainsCozaApi;
+use FintechSystems\DomainsCoza\Facades\DomainsCoza;
+use Illuminate\Support\Facades\Http;
 
 it('can test', function () {
     expect(true)->toBeTrue();
@@ -18,90 +17,90 @@ it('can call the API without a Facade', function () {
         ]
     );
 
-    ray($result = $domainsCoza->echoPhrase("Howzit!"))->green();
+    ray($result = $domainsCoza->echoPhrase('Howzit!'))->green();
 
-    expect("Howzit!")->toBe($result);
+    expect('Howzit!')->toBe($result);
 });
 
 it('can call the API with a Facade', function () {
-    ray($result = DomainsCoza::echoPhrase("Howzit again!"))->green();
+    ray($result = DomainsCoza::echoPhrase('Howzit again!'))->green();
 
-    expect("Howzit again!")->toBe($result);
+    expect('Howzit again!')->toBe($result);
 });
 
 it('can log in to the API and retrieve a bearer token', function () {
     Http::fake([
         'https://api.domains.co.za/api/login' => Http::response([
-            "intReturnCode" => 1,
-            "strUUID" => "foo",
-            "strMessage" => "Successful",
-            "token" => "bar",
-            "strApiHost" => "bas",
-        ])
+            'intReturnCode' => 1,
+            'strUUID' => 'foo',
+            'strMessage' => 'Successful',
+            'token' => 'bar',
+            'strApiHost' => 'bas',
+        ]),
     ]);
 
     DomainsCoza::login();
 
-    expect("bar")->toBe(DomainsCoza::token());
+    expect('bar')->toBe(DomainsCoza::token());
 });
 
 it('can retrieve a list of domains', function () {
     Http::fake([
         'https://api.domains.co.za/api/login' => Http::response([
-            "intReturnCode" => 1,
-            "strUUID" => "foo",
-            "strMessage" => "Successful",
-            "token" => "bar",
-            "strApiHost" => "bas",
-        ])
+            'intReturnCode' => 1,
+            'strUUID' => 'foo',
+            'strMessage' => 'Successful',
+            'token' => 'bar',
+            'strApiHost' => 'bas',
+        ]),
     ]);
 
     DomainsCoza::login();
-    
+
     Http::fake([
         'https://api.domains.co.za/api/domain/list' => Http::response([
-            "intReturnCode" => 1,
-            "strUUID" => "foo",
-            "strMessage" => "Successful",
-            "arrDomains" => [
+            'intReturnCode' => 1,
+            'strUUID' => 'foo',
+            'strMessage' => 'Successful',
+            'arrDomains' => [
                 0 => [
-                    "strDomainName" => "bar.example.co.za",
-                    "contactName" => "Eugene van der Merwe",
-                    "strContactID" => "bar",
-                    "status" => "ok",
-                    "eppStatus" => "ok",
-                    "strDns" => 0,
-                    "createdDate" => 1622189848,
-                    "expiryDate" => 1685261848,
-                    "suspendDate" => 1685693848,
-                    "redemptionDate" => 1686125848,
-                    "deleteDate" => 1687853848,
-                    "autorenew" => 0,
-                    "externalRef" => null,
-                    "nameservers" => []
+                    'strDomainName' => 'bar.example.co.za',
+                    'contactName' => 'Eugene van der Merwe',
+                    'strContactID' => 'bar',
+                    'status' => 'ok',
+                    'eppStatus' => 'ok',
+                    'strDns' => 0,
+                    'createdDate' => 1622189848,
+                    'expiryDate' => 1685261848,
+                    'suspendDate' => 1685693848,
+                    'redemptionDate' => 1686125848,
+                    'deleteDate' => 1687853848,
+                    'autorenew' => 0,
+                    'externalRef' => null,
+                    'nameservers' => [],
                 ],
                 1 => [
-                    "strDomainName" => "bas.example.co.za",
-                    "contactName" => "Eugene van der Merwe",
-                    "strContactID" => "bas",
-                    "status" => "ok",
-                    "eppStatus" => "ok",
-                    "strDns" => 0,
-                    "createdDate" => 1622189848,
-                    "expiryDate" => 1685261848,
-                    "suspendDate" => 1685693848,
-                    "redemptionDate" => 1686125848,
-                    "deleteDate" => 1687853848,
-                    "autorenew" => 0,
-                    "externalRef" => null,
-                    "nameservers" => []
-                ]
+                    'strDomainName' => 'bas.example.co.za',
+                    'contactName' => 'Eugene van der Merwe',
+                    'strContactID' => 'bas',
+                    'status' => 'ok',
+                    'eppStatus' => 'ok',
+                    'strDns' => 0,
+                    'createdDate' => 1622189848,
+                    'expiryDate' => 1685261848,
+                    'suspendDate' => 1685693848,
+                    'redemptionDate' => 1686125848,
+                    'deleteDate' => 1687853848,
+                    'autorenew' => 0,
+                    'externalRef' => null,
+                    'nameservers' => [],
+                ],
             ],
-            "intTotal" => 2,
-            "intFilterTotal" => 2,
-            "intReturnedTotal" => 2,
-            "strApiHost" => "api-server-01",
-        ])
+            'intTotal' => 2,
+            'intFilterTotal' => 2,
+            'intReturnedTotal' => 2,
+            'strApiHost' => 'api-server-01',
+        ]),
     ]);
 
     $result = DomainsCoza::list();
@@ -110,5 +109,4 @@ it('can retrieve a list of domains', function () {
     expect($result)->toHaveKey('strMessage', 'Successful');
     expect($result)->toHaveKey('arrDomains');
     expect($result)->toHaveKey('intTotal');
-
 })->only();

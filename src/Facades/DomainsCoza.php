@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
 class DomainsCoza extends Facade
 {
     protected static function getFacadeAccessor()
-    {        
+    {
         return 'domainscoza';
     }
 }

@@ -16,7 +16,7 @@ class ListCommand extends Command
         DomainsCoza::login();
 
         DomainsCoza::list();
-        
+
         $this->comment('All done');
 
         return self::SUCCESS;

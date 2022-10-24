@@ -10,7 +10,7 @@ class DomainsCozaServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/domainscoza.php' => config_path('domainscoza.php'),
-        ], 'domainscoza-config');        
+        ], 'domainscoza-config');
     }
 
     public function register()
@@ -18,14 +18,13 @@ class DomainsCozaServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/domainscoza.php', 'domainscoza'
         );
-        
+
         $this->app->bind('domainscoza', function () {
-            return new DomainsCoza([                
+            return new DomainsCoza([
                 'url' => config('domainscoza.url'),
                 'username' => config('domainscoza.username'),
-                'password' => config('domainscoza.password'),                
+                'password' => config('domainscoza.password'),
             ]);
-        });        
+        });
     }
-    
 }
