@@ -8,7 +8,7 @@ All notable changes to `domainscoza-api` will be documented in this file.
 - Added a domain info method
 - Removed PHP Stan
 
-## v0.0.0 - 2021-11-01
+## v0.0.0 - 2022-10-24
 
 ### Added
 
