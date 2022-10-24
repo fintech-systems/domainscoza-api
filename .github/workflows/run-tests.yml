@@ -47,4 +47,8 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
+        env:
+            DOMAINSCOZA_URL: "https://api.domains.co.za/api"
+            DOMAINSCOZA_USERNAME: "foo"
+            DOMAINSCOZA_PASSWORD: "bar"
         run: vendor/bin/pest
