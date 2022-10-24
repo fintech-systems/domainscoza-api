@@ -109,4 +109,4 @@ it('can retrieve a list of domains', function () {
     expect($result)->toHaveKey('strMessage', 'Successful');
     expect($result)->toHaveKey('arrDomains');
     expect($result)->toHaveKey('intTotal');
-})->only();
+});
