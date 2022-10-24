@@ -21,11 +21,40 @@ class DomainsCoza
         $this->username = $client['username'];
         $this->password = $client['password'];
 
-        if (! $this->url) {
+        if (!$this->url) {
             $error = 'The API URL was not found. Please check your environment settings.';
             ray($error)->red();
             throw new Exception($error);
         }
+    }
+
+    /**
+     * Helper to connect to another server
+     */
+    public function connect($client)
+    {
+        $this->username = $client['username'];
+        $this->password = $client['password'];
+    }
+
+    /**
+     * Info
+     * 
+     * The following will give you all the information of a domain under your account
+     * 
+     * E.g.: 'sld' => 'mydomainname', 'tld' => 'co.za'
+     * 
+     * https://docs.domains.co.za/#info
+     */
+    public function info($sld, $tld)
+    {
+        return $this->get(
+            'domain',
+            [
+                'sld' => $sld,
+                'tld' => $tld,
+            ]
+        );
     }
 
     /**
@@ -62,8 +91,15 @@ class DomainsCoza
         return $this->token;
     }
 
+    public function username()
+    {
+        return $this->username;
+    }
+
     private function get($endpoint, $data = [])
     {
+        ray("$this->url/$endpoint");
+
         $response = Http::withToken($this->token)
             ->get("$this->url/$endpoint", $data);
 

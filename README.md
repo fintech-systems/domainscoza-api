@@ -44,7 +44,7 @@ composer require fintech-systems/domainscoza-api
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="domainscoza-api-config"
+php artisan vendor:publish --tag="domainscoza-config"
 ```
 
 This is the contents of the published config file:
