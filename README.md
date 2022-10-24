@@ -1,68 +1,72 @@
-# :package_description
+# Laravel wrapper for the Domains.co.za API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/run-tests?label=tests)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/fintech-systems/domainscoza-api.svg?style=flat-square)](https://packagist.org/packages/fintech-systems/domainscoza-api)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/fintech-systems/domainscoza-api/run-tests?label=tests)](https://github.com/fintech-systems/domainscoza-api/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/fintech-systems/domainscoza-api/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/fintech-systems/domainscoza-api/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/fintech-systems/domainscoza-api.svg?style=flat-square)](https://packagist.org/packages/fintech-systems/domainscoza-api)
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Domains.co.za has an eloquent API. This is a wrapper to make it testable using Laravel's HTTP client and mocking.
 
-## Support us
+Domains.co.za API reference: https://docs.domains.co.za
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
+# Authentication
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+https://docs.domains.co.za/#authentication-2
+DOMAINSCOZA_USERNAME
+DOMAINSCOZA_PASSWORD
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+## Auth URLs
+
+Live URL : https://api.domains.co.za/api
+Development URL : https://lapi-dev.domains.co.za/api 
+Note: Contact support to get a dev environment setup
+API Version : 5.0.19
+
+## Login
+
+POST https://api.domains.co.za/api/login
+
+`You will receive a bearer token to be used in the Authorization header for all subsequent requests.`
+
+# Sample API calls
+
+## List
+https://docs.domains.co.za/#list
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
+composer require fintech-systems/domainscoza-api
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="domainscoza-api-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
 return [
+    'username' => env('DOMAINSCOZA_USERNAME'),
+    'password' => env('DOMAINSCOZA_PASSWORD'),
 ];
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-views"
+php artisan vendor:publish --tag="domainscoza-api-views"
 ```
 
 ## Usage
 
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+$domainsCoza = new FintechSystems\DomainsCoza();
+echo $domainsCoza->echoPhrase('Hello, FintechSystems!');
 ```
 
 ## Testing
@@ -85,7 +89,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Eugene van der Merwe](https://github.com/eugenevdm)
 - [All Contributors](../../contributors)
 
 ## License
