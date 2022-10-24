@@ -21,7 +21,7 @@ class DomainsCoza
         $this->username = $client['username'];
         $this->password = $client['password'];
 
-        if (!$this->url) {
+        if (! $this->url) {
             $error = 'The API URL was not found. Please check your environment settings.';
             ray($error)->red();
             throw new Exception($error);
@@ -39,11 +39,11 @@ class DomainsCoza
 
     /**
      * Info
-     * 
+     *
      * The following will give you all the information of a domain under your account
-     * 
+     *
      * E.g.: 'sld' => 'mydomainname', 'tld' => 'co.za'
-     * 
+     *
      * https://docs.domains.co.za/#info
      */
     public function info($sld, $tld)

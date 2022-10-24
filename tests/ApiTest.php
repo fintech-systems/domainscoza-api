@@ -130,28 +130,28 @@ it('can retrieve an EPP contact', function () {
             'strMessage' => 'Successful',
             'strDomainName' => 'example.com',
             'strEppStatus' => 'ok',
-            "arrRegistrant" => [
-                "strContactID" => "foo",
-                "strContactName" => "Eugene van der Merwe",
-                "strContactEmail" => "eugene@example.com",
-                "strContactNumber" => "bar",
-                "strContactCompany" => "Fintech Systems",
-                "strContactAddress" => [],
-                "strContactCity" => "Stellenbosch",
-                "strContactProvince" => "Western Cape",
-                "strContactPostalCode" => "7600",
-                "strContactCountry" => "ZA",
-                "strContactFax" => "bas",
-                "strContactType" => "registrant",
-                "strStatus" => "pendingUpdate",
-                "strVerificationStatus" => "Unverified",
-                "arrPendingUpdate" => []
+            'arrRegistrant' => [
+                'strContactID' => 'foo',
+                'strContactName' => 'Eugene van der Merwe',
+                'strContactEmail' => 'eugene@example.com',
+                'strContactNumber' => 'bar',
+                'strContactCompany' => 'Fintech Systems',
+                'strContactAddress' => [],
+                'strContactCity' => 'Stellenbosch',
+                'strContactProvince' => 'Western Cape',
+                'strContactPostalCode' => '7600',
+                'strContactCountry' => 'ZA',
+                'strContactFax' => 'bas',
+                'strContactType' => 'registrant',
+                'strStatus' => 'pendingUpdate',
+                'strVerificationStatus' => 'Unverified',
+                'arrPendingUpdate' => [],
             ],
-            "arrAdmin" => [],
-            "arrTech" => [],
-            "arrBilling" => [],
-            "autorenew" => "false"
-        ])
+            'arrAdmin' => [],
+            'arrTech' => [],
+            'arrBilling' => [],
+            'autorenew' => 'false',
+        ]),
     ]);
 
     $result = DomainsCoza::info('example', 'com');
@@ -159,9 +159,8 @@ it('can retrieve an EPP contact', function () {
     expect($result)->toHaveKey('intReturnCode', 1);
     expect($result)->toHaveKey('strMessage', 'Successful');
     expect($result)->toHaveKey('arrRegistrant');
-    expect($result)->toHaveKey('arrAdmin');    
+    expect($result)->toHaveKey('arrAdmin');
     expect($result)->toHaveKey('arrTech');
     expect($result)->toHaveKey('arrBilling');
-    expect($result)->toHaveKey('autorenew', "false");
-
+    expect($result)->toHaveKey('autorenew', 'false');
 });
