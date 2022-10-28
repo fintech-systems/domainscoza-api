@@ -16,16 +16,12 @@ class DomainsCoza
     private $token;
 
     public function __construct($client)
-    {
+    {        
         $this->url = $client['url'];
         $this->username = $client['username'];
-        $this->password = $client['password'];
+        $this->password = $client['password'];        
 
-        if (! $this->url) {
-            $error = 'The API URL was not found. Please check your environment settings.';
-            ray($error)->red();
-            throw new Exception($error);
-        }
+        $this->throwExceptionIfUrlNotPresent();
     }
 
     /**
@@ -116,6 +112,16 @@ class DomainsCoza
         ray($response->json());
 
         return $response->json();
+    }
+
+    private function throwExceptionIfUrlNotPresent() {
+        if (! $this->url) {
+            $error = 'The API URL was not found. Please check your environment settings.';
+
+            ray($error)->red();
+
+            throw new Exception($error);
+        }
     }
 
     public function echoPhrase($message)
