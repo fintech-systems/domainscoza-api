@@ -2,6 +2,10 @@
 
 All notable changes to `domainscoza-api` will be documented in this file.
 
+## v0.1.0 - 2023-05-01
+
+Prep for L10
+
 ## v0.0.2 - 2023-05-01
 
 - Removed `illuminate/contracts` from composer requires
