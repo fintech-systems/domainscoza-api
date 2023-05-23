@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.5"        
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -25,12 +25,12 @@
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
-        "pestphp/pest-plugin-laravel": "^1.1",        
-        "phpunit/phpunit": "^9.5",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^10.0",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
-        "psr-4": {            
+        "psr-4": {
             "FintechSystems\\DomainsCoza\\": "src",
             "FintechSystems\\DomainsCoza\\Database\\Factories\\": "database/factories"
         }
