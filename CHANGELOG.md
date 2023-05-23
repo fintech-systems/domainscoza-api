@@ -2,6 +2,10 @@
 
 All notable changes to `domainscoza-api` will be documented in this file.
 
+## v0.2.0 - 2023-05-23
+
+Upgrade to Laravel 10 dependencies
+
 ## v0.1.0 - 2023-05-01
 
 Prep for L10
