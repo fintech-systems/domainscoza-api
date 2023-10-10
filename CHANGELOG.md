@@ -2,6 +2,11 @@
 
 All notable changes to `domainscoza-api` will be documented in this file.
 
+## 2023-10-10
+
+- Update some automated Github dependencies
+- Update phpunit.xml.dist to contain the correct `.env` settings for HTTP faking
+
 ## v0.2.0 - 2023-05-23
 
 Upgrade to Laravel 10 dependencies

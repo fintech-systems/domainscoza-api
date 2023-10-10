@@ -8,6 +8,11 @@ it('can test', function () {
     expect(true)->toBeTrue();
 });
 
+// Check phpunit.xml.dist which has to have the exact env setting https://api.domains.co.za/api
+it('can read the environment', function() {
+    expect(env('DOMAINSCOZA_URL'))->toBeString();
+});
+
 it('can call the API without a Facade', function () {
     $domainsCoza = new DomainsCozaApi(
         [

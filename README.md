@@ -11,16 +11,20 @@ Domains.co.za API reference: https://docs.domains.co.za
 
 # Authentication
 
+```
 https://docs.domains.co.za/#authentication-2
 DOMAINSCOZA_USERNAME
 DOMAINSCOZA_PASSWORD
+```
 
 ## Auth URLs
 
+```
 Live URL : https://api.domains.co.za/api
 Development URL : https://lapi-dev.domains.co.za/api 
 Note: Contact support to get a dev environment setup
 API Version : 5.0.19
+```
 
 ## Login
 
