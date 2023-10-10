@@ -9,7 +9,7 @@ it('can test', function () {
 });
 
 // Check phpunit.xml.dist which has to have the exact env setting https://api.domains.co.za/api
-it('can read the environment', function() {
+it('can read the environment', function () {
     expect(env('DOMAINSCOZA_URL'))->toBeString();
 });
 
